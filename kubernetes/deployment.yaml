@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-name-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: hello-name-backend
+  template:
+    metadata:
+      labels:
+        name: hello-name-backend
+    spec:
+      containers:
+      - name: application
+        env:
+        - name: NAME
+          value: "Rohit"
+        image: rohit/hello-name-backend:1.0
+        imagePullPolicy: Never
+        ports:
+          - containerPort: 3000
